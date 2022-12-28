@@ -1,4 +1,5 @@
 using Xunit;
+using Xunit.Sdk;
 
 namespace ConcurrentBuffers.SpinLockBuffer.Tests;
 
@@ -22,5 +23,44 @@ public class UnitTest1
         Assert.Single(flushed);
         var actual = flushed.First();
         Assert.Equal(expected, actual);
+    }
+
+    public static IEnumerable<int> GenerateRandomInts(int amount) => 
+        Enumerable
+           .Repeat(0, amount)
+           .Select(_ => Random.Shared.Next());
+
+    public static IEnumerable<object[]> RandomInts =>
+        new[]
+        {
+            new[] {GenerateRandomInts(1)}, 
+            new[] {GenerateRandomInts(2)}, 
+            new[] {GenerateRandomInts(3)}, 
+            new[] {GenerateRandomInts(4)}, 
+            new[] {GenerateRandomInts(5)}, 
+            new[] {GenerateRandomInts(10)}, 
+            new[] {GenerateRandomInts(20)}, 
+            new[] {GenerateRandomInts(30)}, 
+            new[] {GenerateRandomInts(50)}, 
+        };
+
+    [Theory]
+    [MemberData(nameof(RandomInts))]
+    public void FlushAfterAddRange_WithMultipleElements_ShouldReturnAllAddedElements(IEnumerable<int> values)
+    {
+        var expected = values.ToArray();
+        _buffer.AddRange(expected);
+        var actual = _buffer.Flush();
+        Assert.Equal(expected, actual);
+    }
+
+    [Theory]
+    [MemberData(nameof(RandomInts))]
+    public void FlushAfterFlush_ShouldReturnNoElements(IEnumerable<int> values)
+    {
+        _buffer.AddRange(values);
+        _buffer.Flush();
+        var actual = _buffer.Flush();
+        Assert.Empty(actual);
     }
 }
