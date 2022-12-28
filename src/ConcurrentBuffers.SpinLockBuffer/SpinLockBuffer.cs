@@ -9,21 +9,22 @@ namespace ConcurrentBuffers.SpinLockBuffer;
 public class SpinLockBuffer<T>: IConcurrentBuffer<T>
 {
     private List<T> Buffer { get; } = new();
-    private SpinLock Lock { get; }
+    
+    private SpinLock _lock;
     
     public void Add(T item)
     {
         var lockTaken = false;
-        Lock.Enter(ref lockTaken);
         try
         {
+            _lock.Enter(ref lockTaken);
             Buffer.Add(item);
         }
         finally
         {
             if (lockTaken)
             {
-                Lock.Exit();
+                _lock.Exit();
             }
         }
     }
@@ -31,16 +32,16 @@ public class SpinLockBuffer<T>: IConcurrentBuffer<T>
     public void AddRange(IEnumerable<T> items)
     {
         var lockTaken = false;
-        Lock.Enter(ref lockTaken);
         try
         {
+            _lock.Enter(ref lockTaken);
             Buffer.AddRange(items);
         }
         finally
         {
             if (lockTaken)
             {
-                Lock.Exit();
+                _lock.Exit();
             }
         }
     }
@@ -49,9 +50,9 @@ public class SpinLockBuffer<T>: IConcurrentBuffer<T>
     {
         T[] stored;
         var lockTaken = false;
-        Lock.Enter(ref lockTaken);
         try
         {
+            _lock.Enter(ref lockTaken);
             stored = Buffer.ToArray();
             Buffer.Clear();
         }
@@ -59,7 +60,7 @@ public class SpinLockBuffer<T>: IConcurrentBuffer<T>
         {
             if (lockTaken)
             {
-                Lock.Exit();
+                _lock.Exit();
             }
         }
         return stored;
