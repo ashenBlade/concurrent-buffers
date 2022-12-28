@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcurrentBuffers", "ConcurrentBuffers\ConcurrentBuffers.csproj", "{AAD3C06E-6419-4AC9-AA1B-50A69BE2332F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcurrentBuffers.Core", "ConcurrentBuffers.Core\ConcurrentBuffers.Core.csproj", "{9309E038-D347-468C-96D9-17FC82A981BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{AAD3C06E-6419-4AC9-AA1B-50A69BE2332F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAD3C06E-6419-4AC9-AA1B-50A69BE2332F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAD3C06E-6419-4AC9-AA1B-50A69BE2332F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9309E038-D347-468C-96D9-17FC82A981BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9309E038-D347-468C-96D9-17FC82A981BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9309E038-D347-468C-96D9-17FC82A981BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9309E038-D347-468C-96D9-17FC82A981BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
