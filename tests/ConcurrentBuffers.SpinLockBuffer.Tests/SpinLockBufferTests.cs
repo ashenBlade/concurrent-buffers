@@ -63,4 +63,29 @@ public class UnitTest1
         var actual = _buffer.Flush();
         Assert.Empty(actual);
     }
+
+    [Theory]
+    [MemberData(nameof(RandomInts))]
+    public async Task Add_WithConcurrentCalls_ShouldAddAllElements(IEnumerable<int> values)
+    {
+        var expected = values.ToHashSet();
+        await Task.WhenAll(expected
+                          .Select(v => Task.Run(() => _buffer.Add(v)))
+                          .ToArray());
+        var actual = _buffer.Flush()
+                            .ToHashSet();
+        Assert.Equal(expected, actual);
+    }
+
+    [Theory]
+    [MemberData(nameof(RandomInts))]
+    public async Task AddRange_WithConcurrentCalls_ShouldAddAllElements(IEnumerable<int> values)
+    {
+        var expected = values.ToHashSet();
+        await Task.WhenAll(expected.Chunk(5)
+                                   .Select(r => Task.Run(() => _buffer.AddRange(r))));
+        var actual = _buffer.Flush()
+                            .ToHashSet();
+        Assert.Equal(expected, actual);
+    }
 }
