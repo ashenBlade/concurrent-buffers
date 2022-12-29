@@ -1,6 +1,6 @@
 ﻿using ConcurrentBuffers.Abstractions;
 
-namespace ConcurrentBuffers.Buffers;
+namespace ConcurrentBuffers;
 
 /// <summary>
 /// IConcurrentBuffer implementation uses SpinLock

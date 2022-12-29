@@ -1,7 +1,7 @@
 ﻿using ConcurrentBuffers.Abstractions;
 using Xunit;
 
-namespace ConcurrentBuffers.Buffers.Tests;
+namespace ConcurrentBuffers.Tests;
 
 public abstract class BufferTestsBase<TBuffer> where TBuffer: IBuffer<int>
 {

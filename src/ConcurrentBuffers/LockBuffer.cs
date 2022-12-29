@@ -1,6 +1,6 @@
 ﻿using ConcurrentBuffers.Abstractions;
 
-namespace ConcurrentBuffers.Buffers;
+namespace ConcurrentBuffers;
 
 public class LockBuffer<T>: IConcurrentBuffer<T>
 {

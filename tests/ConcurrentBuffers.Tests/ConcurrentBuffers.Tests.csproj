@@ -22,7 +22,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\ConcurrentBuffers.Buffers\ConcurrentBuffers.Buffers.csproj" />
+      <ProjectReference Include="..\..\src\ConcurrentBuffers\ConcurrentBuffers.csproj" />
     </ItemGroup>
 
 </Project>

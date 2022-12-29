@@ -1,4 +1,4 @@
-﻿namespace ConcurrentBuffers.Buffers.Tests;
+﻿namespace ConcurrentBuffers.Tests;
 
 public class LockBufferTests: ConcurrentBufferTestsBase<LockBuffer<int>>
 {

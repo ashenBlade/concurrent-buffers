@@ -2,7 +2,7 @@
 using ConcurrentBuffers.Abstractions;
 using Xunit;
 
-namespace ConcurrentBuffers.Buffers.Tests;
+namespace ConcurrentBuffers.Tests;
 
 public abstract class ConcurrentBufferTestsBase<TConcurrentBuffer>
     : BufferTestsBase<TConcurrentBuffer> 
