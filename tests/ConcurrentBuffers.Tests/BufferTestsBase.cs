@@ -7,7 +7,7 @@ public abstract class BufferTestsBase<TBuffer> where TBuffer: IBuffer<int>
 {
     public abstract TBuffer Buffer { get; }
     
-    [Theory(DisplayName = "Fulsh")]
+    [Theory]
     [InlineData(1)]
     [InlineData(2)]
     [InlineData(3)]
@@ -48,9 +48,9 @@ public abstract class BufferTestsBase<TBuffer> where TBuffer: IBuffer<int>
     [MemberData(nameof(RandomNumbers))]
     public void FlushAfterAddRange_WithMultipleElements_ShouldReturnAllAddedElements(IEnumerable<int> values)
     {
-        var expected = values.ToArray();
+        var expected = values.ToHashSet();
         Buffer.AddRange(expected);
-        var actual = Buffer.Flush();
+        var actual = Buffer.Flush().ToHashSet();
         Assert.Equal(expected, actual);
     }
 
