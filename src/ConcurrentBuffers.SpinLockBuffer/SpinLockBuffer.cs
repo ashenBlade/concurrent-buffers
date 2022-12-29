@@ -1,4 +1,4 @@
-﻿using ConcurrentBuffers.Core;
+﻿using ConcurrentBuffers.Abstractions;
 
 namespace ConcurrentBuffers.SpinLockBuffer;
 

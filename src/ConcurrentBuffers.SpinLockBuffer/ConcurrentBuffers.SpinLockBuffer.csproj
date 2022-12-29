@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\ConcurrentBuffers.Core\ConcurrentBuffers.Core.csproj" />
+      <ProjectReference Include="..\ConcurrentBuffers.Abstractions\ConcurrentBuffers.Abstractions.csproj" />
     </ItemGroup>
 
 </Project>

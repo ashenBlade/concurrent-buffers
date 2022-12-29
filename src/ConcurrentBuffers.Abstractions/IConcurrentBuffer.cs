@@ -1,4 +1,4 @@
-﻿namespace ConcurrentBuffers.Core;
+﻿namespace ConcurrentBuffers.Abstractions;
 
 /// <summary>
 /// Interface, represents concurrent buffer

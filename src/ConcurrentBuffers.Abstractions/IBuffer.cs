@@ -1,4 +1,4 @@
-﻿namespace ConcurrentBuffers.Core;
+﻿namespace ConcurrentBuffers.Abstractions;
 
 /// <summary>
 /// Interface, that represents buffer with ability to insert and flush

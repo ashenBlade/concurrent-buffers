@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{27123C73-676
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcurrentBuffers", "src\ConcurrentBuffers\ConcurrentBuffers.csproj", "{90FAA869-9415-4C5B-A704-06A530750D24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcurrentBuffers.Core", "src\ConcurrentBuffers.Core\ConcurrentBuffers.Core.csproj", "{CA8B80A1-D1DB-4B18-A9D0-CA86CB058B3A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcurrentBuffers.Abstractions", "src\ConcurrentBuffers.Abstractions\ConcurrentBuffers.Abstractions.csproj", "{CA8B80A1-D1DB-4B18-A9D0-CA86CB058B3A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{12E9376C-1C45-4BA2-9D9B-2B2E4A174AEF}"
 EndProject
