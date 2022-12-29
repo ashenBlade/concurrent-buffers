@@ -8,8 +8,7 @@ namespace ConcurrentBuffers.SpinLockBuffer;
 /// </summary>
 public class SpinLockBuffer<T>: IConcurrentBuffer<T>
 {
-    private List<T> Buffer { get; } = new();
-    
+    private readonly List<T> _buffer = new();
     private SpinLock _lock;
     
     public void Add(T item)
@@ -18,7 +17,7 @@ public class SpinLockBuffer<T>: IConcurrentBuffer<T>
         try
         {
             _lock.Enter(ref lockTaken);
-            Buffer.Add(item);
+            _buffer.Add(item);
         }
         finally
         {
@@ -35,7 +34,7 @@ public class SpinLockBuffer<T>: IConcurrentBuffer<T>
         try
         {
             _lock.Enter(ref lockTaken);
-            Buffer.AddRange(items);
+            _buffer.AddRange(items);
         }
         finally
         {
@@ -53,8 +52,8 @@ public class SpinLockBuffer<T>: IConcurrentBuffer<T>
         try
         {
             _lock.Enter(ref lockTaken);
-            stored = Buffer.ToArray();
-            Buffer.Clear();
+            stored = _buffer.ToArray();
+            _buffer.Clear();
         }
         finally
         {
