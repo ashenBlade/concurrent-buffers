@@ -22,7 +22,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\ConcurrentBuffers.SpinLockBuffer\ConcurrentBuffers.SpinLockBuffer.csproj" />
+      <ProjectReference Include="..\..\src\ConcurrentBuffers.Buffers\ConcurrentBuffers.Buffers.csproj" />
     </ItemGroup>
 
 </Project>

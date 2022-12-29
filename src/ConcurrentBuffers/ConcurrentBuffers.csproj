@@ -7,11 +7,12 @@
         <Title>ConcurrentBuffers</Title>
         <Authors>AshBlade</Authors>
         <Description>The package provides abstractions and implementations for Buffer container types: add items and flush all stored</Description>
+        <PackageTags>buffer collections cache concurrent buffers store</PackageTags>
     </PropertyGroup>
-
+    
     <ItemGroup>
       <ProjectReference Include="..\ConcurrentBuffers.Abstractions\ConcurrentBuffers.Abstractions.csproj" />
-      <ProjectReference Include="..\ConcurrentBuffers.SpinLockBuffer\ConcurrentBuffers.SpinLockBuffer.csproj" />
+      <ProjectReference Include="..\ConcurrentBuffers.Buffers\ConcurrentBuffers.Buffers.csproj" />
     </ItemGroup>
 
 </Project>

@@ -1,8 +1,7 @@
 using System.Collections.Concurrent;
 using Xunit;
-using Xunit.Abstractions;
 
-namespace ConcurrentBuffers.SpinLockBuffer.Tests;
+namespace ConcurrentBuffers.Buffers.Tests;
 
 public class SpinLockBufferTests
 {

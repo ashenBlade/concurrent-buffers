@@ -11,9 +11,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcurrentBuffers.Abstracti
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{12E9376C-1C45-4BA2-9D9B-2B2E4A174AEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcurrentBuffers.SpinLockBuffer", "src\ConcurrentBuffers.SpinLockBuffer\ConcurrentBuffers.SpinLockBuffer.csproj", "{A610323A-97D4-4E8A-9E03-3DBAF1BA5FB5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcurrentBuffers.Buffers", "src\ConcurrentBuffers.Buffers\ConcurrentBuffers.Buffers.csproj", "{A610323A-97D4-4E8A-9E03-3DBAF1BA5FB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcurrentBuffers.SpinLockBuffer.Tests", "tests\ConcurrentBuffers.SpinLockBuffer.Tests\ConcurrentBuffers.SpinLockBuffer.Tests.csproj", "{7AE1539C-C42A-43F8-9643-AC8AE4B1658B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcurrentBuffers.Buffers.Tests", "tests\ConcurrentBuffers.Buffers.Tests\ConcurrentBuffers.Buffers.Tests.csproj", "{7AE1539C-C42A-43F8-9643-AC8AE4B1658B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
