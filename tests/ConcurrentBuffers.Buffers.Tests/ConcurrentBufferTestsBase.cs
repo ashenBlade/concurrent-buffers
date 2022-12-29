@@ -8,8 +8,6 @@ public abstract class ConcurrentBufferTestsBase<TConcurrentBuffer>
     : BufferTestsBase<TConcurrentBuffer> 
     where TConcurrentBuffer: IConcurrentBuffer<int>
 {
-    public override TConcurrentBuffer Buffer { get; }
-
     [Theory]
     [MemberData(nameof(RandomNumbers))]
     public async Task Add_WithConcurrentCalls_ShouldAddAllElements(IEnumerable<int> values)
