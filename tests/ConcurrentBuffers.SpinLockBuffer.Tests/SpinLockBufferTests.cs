@@ -4,14 +4,10 @@ using Xunit.Abstractions;
 
 namespace ConcurrentBuffers.SpinLockBuffer.Tests;
 
-public class UnitTest1
+public class SpinLockBufferTests
 {
     private readonly SpinLockBuffer<int> _buffer = new();
-
-    public UnitTest1(ITestOutputHelper testOutputHelper)
-    {
-    }
-
+    
     [Theory]
     [InlineData(1)]
     [InlineData(2)]
@@ -111,18 +107,20 @@ public class UnitTest1
            .SelectMany(nc => ParallelCallsCount
                           .Select(pcc => new object[] {nc, pcc}));
 
-    [Theory]
+    const int MaxWaitTime = 1000;
+    
+    // Timeout for deadlock check
+    [Theory(Timeout = MaxWaitTime * 10)]
     [MemberData(nameof(NumbersCountParallelCallsCount))]
     public void Flush_WithConcurrentAddCalls_ShouldFlushAllAddedElements(int numbersCount, int concurrentFlushCalls)
     {
         var expected = GenerateRandomNumbers(numbersCount).ToHashSet();
         var flushed = new ConcurrentQueue<IEnumerable<int>>();
-        const int maxWaitTime = 1000;
         Task.WaitAll(expected
                     .Chunk(10)
                     .Select((chunk, i) => Task.Run(async () =>
                      {
-                         await Task.Delay(Random.Shared.Next(0, maxWaitTime));
+                         await Task.Delay(Random.Shared.Next(0, MaxWaitTime));
                          if (Random.Shared.Next(0, 1) == 0)
                          {
                              foreach (var number in chunk)
@@ -138,7 +136,7 @@ public class UnitTest1
                     .Concat(Enumerable.Range(0, concurrentFlushCalls)
                                       .Select(i => Task.Run(async () =>
                                        {
-                                           await Task.Delay(Random.Shared.Next(0, maxWaitTime));
+                                           await Task.Delay(Random.Shared.Next(0, MaxWaitTime));
                                            flushed.Enqueue(_buffer.Flush());
                                        })))
                     .ToArray());
