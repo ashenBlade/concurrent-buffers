@@ -1,18 +1,15 @@
 using System.Collections.Concurrent;
 using Xunit;
 using Xunit.Abstractions;
-using Xunit.Sdk;
 
 namespace ConcurrentBuffers.SpinLockBuffer.Tests;
 
 public class UnitTest1
 {
-    private readonly ITestOutputHelper _testOutputHelper;
-    private SpinLockBuffer<int> _buffer = new();
+    private readonly SpinLockBuffer<int> _buffer = new();
 
     public UnitTest1(ITestOutputHelper testOutputHelper)
     {
-        _testOutputHelper = testOutputHelper;
     }
 
     [Theory]
@@ -33,27 +30,27 @@ public class UnitTest1
         Assert.Equal(expected, actual);
     }
 
-    public static IEnumerable<int> GenerateRandomInts(int amount) => 
+    public static IEnumerable<int> GenerateRandomNumbers(int amount) => 
         Enumerable
            .Repeat(0, amount)
            .Select(_ => Random.Shared.Next());
 
-    public static IEnumerable<object[]> RandomInts =>
+    public static IEnumerable<object[]> RandomNumbers =>
         new[]
         {
-            new[] {GenerateRandomInts(1)}, 
-            new[] {GenerateRandomInts(2)}, 
-            new[] {GenerateRandomInts(3)}, 
-            new[] {GenerateRandomInts(4)}, 
-            new[] {GenerateRandomInts(5)}, 
-            new[] {GenerateRandomInts(10)}, 
-            new[] {GenerateRandomInts(20)}, 
-            new[] {GenerateRandomInts(30)}, 
-            new[] {GenerateRandomInts(50)}, 
+            new[] {GenerateRandomNumbers(1)}, 
+            new[] {GenerateRandomNumbers(2)}, 
+            new[] {GenerateRandomNumbers(3)}, 
+            new[] {GenerateRandomNumbers(4)}, 
+            new[] {GenerateRandomNumbers(5)}, 
+            new[] {GenerateRandomNumbers(10)}, 
+            new[] {GenerateRandomNumbers(20)}, 
+            new[] {GenerateRandomNumbers(30)}, 
+            new[] {GenerateRandomNumbers(50)}, 
         };
 
     [Theory]
-    [MemberData(nameof(RandomInts))]
+    [MemberData(nameof(RandomNumbers))]
     public void FlushAfterAddRange_WithMultipleElements_ShouldReturnAllAddedElements(IEnumerable<int> values)
     {
         var expected = values.ToArray();
@@ -63,7 +60,7 @@ public class UnitTest1
     }
 
     [Theory]
-    [MemberData(nameof(RandomInts))]
+    [MemberData(nameof(RandomNumbers))]
     public void FlushAfterFlush_ShouldReturnNoElements(IEnumerable<int> values)
     {
         _buffer.AddRange(values);
@@ -73,7 +70,7 @@ public class UnitTest1
     }
 
     [Theory]
-    [MemberData(nameof(RandomInts))]
+    [MemberData(nameof(RandomNumbers))]
     public async Task Add_WithConcurrentCalls_ShouldAddAllElements(IEnumerable<int> values)
     {
         var expected = values.ToHashSet();
@@ -85,40 +82,23 @@ public class UnitTest1
         Assert.Equal(expected, actual);
     }
 
-    public static IEnumerable<object[]> ManyRandomInts =>
-        new[]
-        {
-            new object[] {GenerateRandomInts(100)}, new object[] {GenerateRandomInts(200)},
-            new object[] {GenerateRandomInts(300)}, new object[] {GenerateRandomInts(500)},
-            new object[] {GenerateRandomInts(1000)}, new object[] {GenerateRandomInts(2000)},
-            new object[] {GenerateRandomInts(5000)},
-        };
-
     [Theory]
-    [MemberData(nameof(ManyRandomInts))]
-    public async Task AddRange_WithConcurrentCalls_ShouldAddAllElements(IEnumerable<int> values)
+    [InlineData(100)]
+    [InlineData(200)]
+    [InlineData(300)]
+    [InlineData(500)]
+    [InlineData(1000)]
+    [InlineData(2000)]
+    [InlineData(5000)]
+    public async Task AddRange_WithConcurrentCalls_ShouldAddAllElements(int numbersCount)
     {
-        var expected = values.ToHashSet();
+        var expected = GenerateRandomNumbers(numbersCount).ToHashSet();
         await Task.WhenAll(expected.Chunk(5)
                                    .Select(r => Task.Run(() => _buffer.AddRange(r))));
         var actual = _buffer.Flush()
                             .ToHashSet();
         Assert.Equal(expected, actual);
     }
-
-    public static IEnumerable<object[]> ManyRandomValuesAndConcurrentFlushCallsCount =>
-        new[]
-        {
-            new object[] {GenerateRandomInts(100), 2},
-            new object[] {GenerateRandomInts(200), 10},
-            new object[] {GenerateRandomInts(300), 300}, 
-            new object[] {GenerateRandomInts(500), 60},
-            new object[] {GenerateRandomInts(1000), 20},
-            new object[] {GenerateRandomInts(2000), 11},
-            new object[] {GenerateRandomInts(5000), 56},
-            new object[] {GenerateRandomInts(1000), 765},
-            new object[] {GenerateRandomInts(1000), 465},
-        };
 
     public static IEnumerable<int> NumbersCount => 
         new[] {100, 150, 200, 250, 300, 500, 1000, 1500, 3000, 5000, 10000};
@@ -135,7 +115,7 @@ public class UnitTest1
     [MemberData(nameof(NumbersCountParallelCallsCount))]
     public void Flush_WithConcurrentAddCalls_ShouldFlushAllAddedElements(int numbersCount, int concurrentFlushCalls)
     {
-        var expected = GenerateRandomInts(numbersCount).ToHashSet();
+        var expected = GenerateRandomNumbers(numbersCount).ToHashSet();
         var flushed = new ConcurrentQueue<IEnumerable<int>>();
         const int maxWaitTime = 1000;
         Task.WaitAll(expected
