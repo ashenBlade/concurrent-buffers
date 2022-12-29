@@ -4,6 +4,14 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <Title>ConcurrentBuffers</Title>
+        <Authors>AshBlade</Authors>
+        <Description>The package provides abstractions and implementations for Buffer container types: add items and flush all stored</Description>
     </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ConcurrentBuffers.Abstractions\ConcurrentBuffers.Abstractions.csproj" />
+      <ProjectReference Include="..\ConcurrentBuffers.SpinLockBuffer\ConcurrentBuffers.SpinLockBuffer.csproj" />
+    </ItemGroup>
 
 </Project>
