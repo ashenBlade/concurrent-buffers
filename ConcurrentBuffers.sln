@@ -13,6 +13,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcurrentBuffers", "src\Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcurrentBuffers.Tests", "tests\ConcurrentBuffers.Tests\ConcurrentBuffers.Tests.csproj", "{7AE1539C-C42A-43F8-9643-AC8AE4B1658B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{6B4E4446-9E22-4EBC-AC8F-372284AE98CB}"
+	ProjectSection(SolutionItems) = preProject
+		.github\nuget.yaml = .github\nuget.yaml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
