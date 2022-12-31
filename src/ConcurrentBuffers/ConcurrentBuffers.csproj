@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <Title>ConcurrentBuffers.Buffers</Title>
+        <Authors>AshBlade</Authors>
+        <Description>Package provides Buffer types with Add and Flush thread-safe operations. Can be used as temporary cache before being processed as batch.</Description>
+        <PackageTags>buffer cache batch collections thread-safe concurrent</PackageTags>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ConcurrentBuffers.Abstractions\ConcurrentBuffers.Abstractions.csproj" />
+    </ItemGroup>
+
+</Project>
