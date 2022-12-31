@@ -28,5 +28,5 @@ jobs:
         run: dotnet pack src/ConcurrentBuffers/ConcurrentBuffers.csproj --no-build --include-source --include-symbols -c Release -v n 
       - name: Push packages to NuGet
         env: 
-          NUGET_API_KEY: %{{ secrets.NUGET_API_KEY }}
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
         run: dotnet nuget push "**/*.nupkg" --source https://api.nuget.org/v3/index.json --api-key "$NUGET_API_KEY" 
