@@ -23,9 +23,9 @@ jobs:
       - name: Run tests
         run: dotnet test --no-build --verbosity normal 
       - name: Create ConcurrentBuffers.Abstractions NuGet package
-        run: dotnet pack src/ConcurrentBuffers.Abstractions/ConcurrentBuffers.Abstractions.csproj --include-source --include-symbols -c Release -v n 
+        run: dotnet pack src/ConcurrentBuffers.Abstractions/ConcurrentBuffers.Abstractions.csproj --skip-duplicate --include-source --include-symbols -c Release -v n 
       - name: Create ConcurrentBuffers NuGet package
-        run: dotnet pack src/ConcurrentBuffers/ConcurrentBuffers.csproj --include-source --include-symbols -c Release -v n 
+        run: dotnet pack src/ConcurrentBuffers/ConcurrentBuffers.csproj --skip-duplicate --include-source --include-symbols -c Release -v n 
       - name: Push packages to NuGet
         env: 
           NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
