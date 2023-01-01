@@ -3,6 +3,10 @@ using ConcurrentBuffers.Abstractions;
 
 namespace ConcurrentBuffers;
 
+/// <summary>
+/// Concurrent buffer, that uses ConcurrentBag to store items
+/// </summary>
+/// <inheritdoc cref="IConcurrentBuffer{T}"/>
 public class ConcurrentBagBuffer<T>: IConcurrentBuffer<T>
 {
     private volatile ConcurrentBag<T> _bag = new();
@@ -15,7 +19,7 @@ public class ConcurrentBagBuffer<T>: IConcurrentBuffer<T>
     {
         foreach (var item in items)
         {
-            _bag.Add(item);    
+            _bag.Add(item);
         }
     }
 

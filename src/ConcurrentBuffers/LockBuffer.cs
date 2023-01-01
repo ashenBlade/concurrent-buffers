@@ -2,6 +2,10 @@
 
 namespace ConcurrentBuffers;
 
+/// <summary>
+/// Concurrent buffer, that uses lock() construction to avoid race condition
+/// </summary>
+/// <inheritdoc cref="IConcurrentBuffer{T}"/>
 public class LockBuffer<T>: IConcurrentBuffer<T>
 {
     private readonly List<T> _buffer = new(); 

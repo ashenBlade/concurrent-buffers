@@ -1,8 +1,8 @@
 ﻿namespace ConcurrentBuffers.Abstractions;
 
 /// <summary>
-/// Interface, represents concurrent buffer
+/// Interface, that represents thread-safe buffer
 /// </summary>
-/// <typeparam name="T">Item type, buffer stores</typeparam>
+/// <inheritdoc cref="IBuffer{T}"/>
 public interface IConcurrentBuffer<T>: IBuffer<T>
 { }

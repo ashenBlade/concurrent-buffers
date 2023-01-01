@@ -1,4 +1,6 @@
-﻿namespace ConcurrentBuffers.Abstractions;
+﻿using System.Collections.Generic;
+
+namespace ConcurrentBuffers.Abstractions;
 
 /// <summary>
 /// Interface, that represents buffer with ability to insert and flush

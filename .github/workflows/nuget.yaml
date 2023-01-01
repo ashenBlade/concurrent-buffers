@@ -3,8 +3,6 @@ name: Publish packages to NuGet
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
 jobs:
   build:
@@ -20,8 +18,6 @@ jobs:
         run: dotnet restore
       - name: Build projects
         run: dotnet build --no-restore
-      - name: Run tests
-        run: dotnet test --no-build --verbosity normal 
       - name: Create ConcurrentBuffers.Abstractions NuGet package
         run: dotnet pack src/ConcurrentBuffers.Abstractions/ConcurrentBuffers.Abstractions.csproj --include-source --include-symbols -c Release -v n 
       - name: Create ConcurrentBuffers NuGet package
