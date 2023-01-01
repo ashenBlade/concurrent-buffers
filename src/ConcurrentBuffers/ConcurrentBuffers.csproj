@@ -8,14 +8,19 @@
         <Description>Package provides Buffer types with Add(T item) and Flush() thread-safe methods. Can be used as temporary cache before being processed as batch.</Description>
         <PackageTags>buffer cache batch collections thread-safe concurrent temporary storage </PackageTags>
         <PackageVersion>2.0.0</PackageVersion>
-        <PackageLicenseUrl>https://github.com/ashenBlade/concurrent-buffers/blob/main/LICENSE</PackageLicenseUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <RepositoryUrl>https://github.com/ashenBlade/concurrent-buffers</RepositoryUrl>
         <LangVersion>latest</LangVersion>
-        <TargetFrameworks>netstandard1.6;netstandard2.0</TargetFrameworks>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\ConcurrentBuffers.Abstractions\ConcurrentBuffers.Abstractions.csproj" />
+        <ProjectReference Include="..\ConcurrentBuffers.Abstractions\ConcurrentBuffers.Abstractions.csproj" />
     </ItemGroup>
-
+    
+    <ItemGroup>
+        <None Include="../../README.md" Pack="true" PackagePath=""/>
+    </ItemGroup>
+    
 </Project>
