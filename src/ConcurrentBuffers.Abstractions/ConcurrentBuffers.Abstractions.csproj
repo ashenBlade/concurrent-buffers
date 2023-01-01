@@ -1,13 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
+        <TargetFramework>netstandard1.0</TargetFramework>
         <Title>ConcurrentBuffers.Abstractions</Title>
         <Authors>AshBlade</Authors>
         <Description>Provides abstractions, that represents buffer</Description>
         <PackageTags>concurrent concurrency buffer storage cache</PackageTags>
+        <PackageLicenseUrl>https://github.com/ashenBlade/concurrent-buffers/blob/main/LICENSE</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/ashenBlade/concurrent-buffers</RepositoryUrl>
+        <LangVersion>latest</LangVersion>
     </PropertyGroup>
 
 </Project>

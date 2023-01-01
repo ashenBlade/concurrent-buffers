@@ -6,6 +6,7 @@ namespace ConcurrentBuffers;
 /// IConcurrentBuffer implementation uses SpinLock
 /// in order to avoid concurrency troubles
 /// </summary>
+/// <inheritdoc cref="IConcurrentBuffer{T}"/>
 public class SpinLockBuffer<T>: IConcurrentBuffer<T>
 {
     private readonly List<T> _buffer = new();

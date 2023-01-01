@@ -1,14 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <Title>ConcurrentBuffers.Buffers</Title>
+        <Title>ConcurrentBuffers</Title>
         <Authors>AshBlade</Authors>
-        <Description>Package provides Buffer types with Add and Flush thread-safe operations. Can be used as temporary cache before being processed as batch.</Description>
-        <PackageTags>buffer cache batch collections thread-safe concurrent</PackageTags>
+        <Description>Package provides Buffer types with Add(T item) and Flush() thread-safe methods. Can be used as temporary cache before being processed as batch.</Description>
+        <PackageTags>buffer cache batch collections thread-safe concurrent temporary storage </PackageTags>
         <PackageVersion>1.0.1</PackageVersion>
+        <PackageLicenseUrl>https://github.com/ashenBlade/concurrent-buffers/blob/main/LICENSE</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/ashenBlade/concurrent-buffers</RepositoryUrl>
+        <LangVersion>latest</LangVersion>
+        <TargetFrameworks>netstandard1.6;netstandard2.0</TargetFrameworks>
     </PropertyGroup>
 
     <ItemGroup>
