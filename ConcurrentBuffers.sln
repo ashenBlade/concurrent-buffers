@@ -14,8 +14,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcurrentBuffers.Tests", "tests\ConcurrentBuffers.Tests\ConcurrentBuffers.Tests.csproj", "{7AE1539C-C42A-43F8-9643-AC8AE4B1658B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{6B4E4446-9E22-4EBC-AC8F-372284AE98CB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{E4493DA4-A4E5-48D3-9241-31D416AD4F6C}"
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\nuget.yaml = .github\workflows\nuget.yaml
+		.github\workflows\pull_request_main.yaml = .github\workflows\pull_request_main.yaml
 	EndProjectSection
 EndProject
 Global
@@ -44,5 +47,6 @@ Global
 		{CA8B80A1-D1DB-4B18-A9D0-CA86CB058B3A} = {27123C73-676E-4FBB-8926-7C598C21DD18}
 		{A610323A-97D4-4E8A-9E03-3DBAF1BA5FB5} = {27123C73-676E-4FBB-8926-7C598C21DD18}
 		{7AE1539C-C42A-43F8-9643-AC8AE4B1658B} = {12E9376C-1C45-4BA2-9D9B-2B2E4A174AEF}
+		{E4493DA4-A4E5-48D3-9241-31D416AD4F6C} = {6B4E4446-9E22-4EBC-AC8F-372284AE98CB}
 	EndGlobalSection
 EndGlobal
